@@ -1,0 +1,207 @@
+{
+    "success": true,
+    "data": [
+        {
+            "id": 3640,
+            "review_id": "3098156844",
+            "shop_id": 0,
+            "shop_name": "依尚·奢愈SPA·养生足道\n(朱辛庄店)",
+            "city_name": "北京",
+            "city_id": 2,
+            "user_id": "0",
+            "user_nickname": "匿名用户",
+            "user_face": "http://p1.meituan.net/dpgroup/40d654f85e4ca6583db6c141873edfd129040.png",
+            "user_power": "普通用户",
+            "add_time": "2026-01-28 22:34:06",
+            "update_time": "2026-01-28 22:34:06",
+            "star": 50,
+            "star_display": "5.0",
+            "content": "这个店10号手法好。人也合适。时刻提醒力度够不够。按完非常放松。人美心善",
+            "pic_count": 4,
+            "video_count": 0,
+            "pic_info": [
+                {
+                    "picId": 7799105715,
+                    "caseId": 0,
+                    "picUrl": "https://img.meituan.net/ugcpic/fdb738dc7c2db2f9db1298cf7bd89c1d618189.jpg%40300w_300h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20",
+                    "videoUrl": null,
+                    "mediaType": 0,
+                    "originPicUrl": "https://img.meituan.net/ugcpic/fdb738dc7c2db2f9db1298cf7bd89c1d618189.jpg%401000w_1000h_0e_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+                },
+                {
+                    "picId": 7799137671,
+                    "caseId": 0,
+                    "picUrl": "https://img.meituan.net/ugcpic/baa5c377378d4f567ea527f01e361f2d952997.jpg%40300w_300h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20",
+                    "videoUrl": null,
+                    "mediaType": 0,
+                    "originPicUrl": "https://img.meituan.net/ugcpic/baa5c377378d4f567ea527f01e361f2d952997.jpg%401000w_1000h_0e_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+                },
+                {
+                    "picId": 7799142804,
+                    "caseId": 0,
+                    "picUrl": "https://img.meituan.net/ugcpic/04d0e200039bd6799df2f927cc6f5881578152.jpg%40300w_300h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20",
+                    "videoUrl": null,
+                    "mediaType": 0,
+                    "originPicUrl": "https://img.meituan.net/ugcpic/04d0e200039bd6799df2f927cc6f5881578152.jpg%401000w_1000h_0e_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+                },
+                {
+                    "picId": 7799134874,
+                    "caseId": 0,
+                    "picUrl": "https://img.meituan.net/ugcpic/91d2a550111933499797a873cfad0251669778.jpg%40300w_300h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20",
+                    "videoUrl": null,
+                    "mediaType": 0,
+                    "originPicUrl": "https://img.meituan.net/ugcpic/91d2a550111933499797a873cfad0251669778.jpg%401000w_1000h_0e_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+                }
+            ],
+            "shop_reply": "暂无回复",
+            "shop_reply_time": "1997-12-08 00:00:00",
+            "reply_list": [],
+            "raw_data": {
+                "star": 50,
+                "caseId": 0,
+                "cityId": 2,
+                "picUrl": [
+                    "https://img.meituan.net/ugcpic/fdb738dc7c2db2f9db1298cf7bd89c1d618189.jpg%40300w_300h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20",
+                    "https://img.meituan.net/ugcpic/baa5c377378d4f567ea527f01e361f2d952997.jpg%40300w_300h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20",
+                    "https://img.meituan.net/ugcpic/04d0e200039bd6799df2f927cc6f5881578152.jpg%40300w_300h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20",
+                    "https://img.meituan.net/ugcpic/91d2a550111933499797a873cfad0251669778.jpg%40300w_300h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+                ],
+                "score1": 0,
+                "score2": 6,
+                "score3": 6,
+                "score4": 0,
+                "shopId": 0,
+                "status": 1,
+                "userId": "0",
+                "addTime": 1769610846000,
+                "content": "这个店10号手法好。人也合适。时刻提醒力度够不够。按完非常放松。人美心善",
+                "orderId": 0,
+                "picInfo": [
+                    {
+                        "picId": 7799105715,
+                        "caseId": 0,
+                        "picUrl": "https://img.meituan.net/ugcpic/fdb738dc7c2db2f9db1298cf7bd89c1d618189.jpg%40300w_300h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20",
+                        "videoUrl": null,
+                        "mediaType": 0,
+                        "originPicUrl": "https://img.meituan.net/ugcpic/fdb738dc7c2db2f9db1298cf7bd89c1d618189.jpg%401000w_1000h_0e_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+                    },
+                    {
+                        "picId": 7799137671,
+                        "caseId": 0,
+                        "picUrl": "https://img.meituan.net/ugcpic/baa5c377378d4f567ea527f01e361f2d952997.jpg%40300w_300h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20",
+                        "videoUrl": null,
+                        "mediaType": 0,
+                        "originPicUrl": "https://img.meituan.net/ugcpic/baa5c377378d4f567ea527f01e361f2d952997.jpg%401000w_1000h_0e_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+                    },
+                    {
+                        "picId": 7799142804,
+                        "caseId": 0,
+                        "picUrl": "https://img.meituan.net/ugcpic/04d0e200039bd6799df2f927cc6f5881578152.jpg%40300w_300h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20",
+                        "videoUrl": null,
+                        "mediaType": 0,
+                        "originPicUrl": "https://img.meituan.net/ugcpic/04d0e200039bd6799df2f927cc6f5881578152.jpg%401000w_1000h_0e_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+                    },
+                    {
+                        "picId": 7799134874,
+                        "caseId": 0,
+                        "picUrl": "https://img.meituan.net/ugcpic/91d2a550111933499797a873cfad0251669778.jpg%40300w_300h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20",
+                        "videoUrl": null,
+                        "mediaType": 0,
+                        "originPicUrl": "https://img.meituan.net/ugcpic/91d2a550111933499797a873cfad0251669778.jpg%401000w_1000h_0e_1l%7Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+                    }
+                ],
+                "avgPrice": 0,
+                "cityName": "北京",
+                "editTime": null,
+                "reviewId": "3098156844",
+                "scoreMap": {
+                    "技师": 5,
+                    "服务": 5,
+                    "环境": 5
+                },
+                "shopName": "依尚·奢愈SPA·养生足道\n(朱辛庄店)",
+                "showDeal": false,
+                "userFace": "http://p1.meituan.net/dpgroup/40d654f85e4ca6583db6c141873edfd129040.png",
+                "vipLevel": -1,
+                "referType": 0,
+                "shopIdStr": "1010370769205764",
+                "totalCost": "",
+                "userPower": "",
+                "caseStatus": -1,
+                "shopIdLong": 1010370769205764,
+                "updateTime": 1769610846000,
+                "consumeDate": null,
+                "dealGroupId": 0,
+                "accurateStar": 50,
+                "qualityScore": 0,
+                "reportStatus": 1,
+                "userNickName": "匿名用户",
+                "complaintInfo": {
+                    "jumpUrl": "https://m.dianping.com/trust/merchant/complain?reviewId=3098156844&shopId=1010370769205764"
+                },
+                "serialNumbers": "",
+                "accurateScore1": null,
+                "accurateScore2": "5.0",
+                "accurateScore3": "5.0",
+                "accurateScore4": null,
+                "caseStatusDesc": "投诉",
+                "accurateScoreMap": {
+                    "技师": "5.0",
+                    "服务": "5.0",
+                    "环境": "5.0"
+                },
+                "isReplyWithPhoto": 0,
+                "orderInfoDTOList": null,
+                "reportStatusDesc": null,
+                "reviewFollowNoteDtoList": null
+            },
+            "ai_gen": "亲爱的顾客，非常感谢您的五星好评和认可！您的满意是我们最大的动力。8号技师的专业手法和贴心的服务，能让您感到放松，我们感到非常欣慰。您的肯定是对我们工作的最大鼓励。我们会继续保持这样的服务品质，期待您的再次光临，愿您的生活充满健康与快乐！",
+            "manual_confirm": 1,
+            "task_reply": 0,
+            "created_at": "2026-01-29 08:27:35",
+            "updated_at": "2026-02-23 03:57:21",
+            "platform": "dianping"
+        },
+        {
+            "id": 3674,
+            "review_id": "3098243869",
+            "shop_id": 0,
+            "shop_name": "沐尚·娱乐标杆·甜系SPA(高新店黑金店)",
+            "city_name": "西安",
+            "city_id": 17,
+            "user_id": "0",
+
+这是当前这个api的部分返回的数据，我截断了，太长了
+
+我需要你帮我写一个新的API
+让我传入shop_id，然后筛选数据表
+review_detail_dianping
+review_detail_meituan
+这是两个数据表，都有shop_id
+要求有三个API
+第一个是dianping的表
+第二个是meituan的表
+第三个是全部，也就是这俩表都需要
+
+还需要在传入一个分页还有分页的数量
+比如第一页30条
+比如第二页100条
+
+支持30/50/100
+这些条
+
+我这个API是需要在前端展示的，因此需要分页的数量和分页数
+数据库信息
+地址：8.146.210.145
+Mysql密码：Kewen888@
+数据库名称：jx_data_info
+
+然后API路径：
+https://kewenai.asia/api
+这个我已经使用了，所以你不能使用这个
+你可以使用
+https://kewenai.asia/api/new
+或者你在编写一个
+
+API返回的数据格式需要是我上方的这个，不能变化，否则前端无法解析
+先不回答任何代码，回答你的理解和计划解决方案，谢谢
