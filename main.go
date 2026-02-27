@@ -64,16 +64,28 @@ func corsMiddleware() gin.HandlerFunc {
 	}
 }
 
-// parseParams extracts and validates shop_id, page, page_size from query string.
-func parseParams(c *gin.Context) (shopID int64, page, pageSize int, err error) {
+// parseParams extracts and validates shop_id (comma-separated list), page, page_size from query string.
+func parseParams(c *gin.Context) (shopIDs []int64, page, pageSize int, err error) {
 	shopIDStr := c.Query("shop_id")
 	if shopIDStr == "" {
 		err = fmt.Errorf("shop_id is required")
 		return
 	}
-	shopID, err = strconv.ParseInt(shopIDStr, 10, 64)
-	if err != nil {
-		err = fmt.Errorf("invalid shop_id")
+	parts := strings.Split(shopIDStr, ",")
+	for _, p := range parts {
+		p = strings.TrimSpace(p)
+		if p == "" {
+			continue
+		}
+		id, parseErr := strconv.ParseInt(p, 10, 64)
+		if parseErr != nil {
+			err = fmt.Errorf("invalid shop_id: %s", p)
+			return
+		}
+		shopIDs = append(shopIDs, id)
+	}
+	if len(shopIDs) == 0 {
+		err = fmt.Errorf("shop_id is required")
 		return
 	}
 
@@ -92,21 +104,34 @@ func parseParams(c *gin.Context) (shopID int64, page, pageSize int, err error) {
 	return
 }
 
-// handleReviews returns a handler for single-table queries.
+// buildPlaceholders returns "?,?,?" and []interface{} args for an IN clause.
+func buildPlaceholders(ids []int64) (string, []interface{}) {
+	ph := make([]string, len(ids))
+	args := make([]interface{}, len(ids))
+	for i, id := range ids {
+		ph[i] = "?"
+		args[i] = id
+	}
+	return strings.Join(ph, ","), args
+}
+
+// handleReviews returns a handler for single-table queries (supports multiple shop_ids).
 func handleReviews(table, platform string) gin.HandlerFunc {
 	cols := strings.Join(commonColumns, ", ")
-	countSQL := fmt.Sprintf("SELECT COUNT(*) FROM %s WHERE shop_id = ?", table)
-	querySQL := fmt.Sprintf("SELECT %s FROM %s WHERE shop_id = ? ORDER BY add_time DESC LIMIT ? OFFSET ?", cols, table)
 
 	return func(c *gin.Context) {
-		shopID, page, pageSize, err := parseParams(c)
+		shopIDs, page, pageSize, err := parseParams(c)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"success": false, "message": err.Error()})
 			return
 		}
 
+		ph, args := buildPlaceholders(shopIDs)
+		countSQL := fmt.Sprintf("SELECT COUNT(*) FROM %s WHERE shop_id IN (%s)", table, ph)
+		querySQL := fmt.Sprintf("SELECT %s FROM %s WHERE shop_id IN (%s) ORDER BY add_time DESC LIMIT ? OFFSET ?", cols, table, ph)
+
 		var total int
-		if err := db.QueryRow(countSQL, shopID).Scan(&total); err != nil {
+		if err := db.QueryRow(countSQL, args...).Scan(&total); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"success": false, "message": "database error"})
 			log.Printf("count error [%s]: %v", table, err)
 			return
@@ -115,7 +140,8 @@ func handleReviews(table, platform string) gin.HandlerFunc {
 		totalPages := int(math.Ceil(float64(total) / float64(pageSize)))
 		offset := (page - 1) * pageSize
 
-		rows, err := db.Query(querySQL, shopID, pageSize, offset)
+		queryArgs := append(args, pageSize, offset)
+		rows, err := db.Query(querySQL, queryArgs...)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"success": false, "message": "database error"})
 			log.Printf("query error [%s]: %v", table, err)
@@ -136,22 +162,24 @@ func handleReviews(table, platform string) gin.HandlerFunc {
 	}
 }
 
-// handleAllReviews queries both tables and merges results.
+// handleAllReviews queries both tables and merges results (supports multiple shop_ids).
 func handleAllReviews(c *gin.Context) {
-	shopID, page, pageSize, err := parseParams(c)
+	shopIDs, page, pageSize, err := parseParams(c)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"success": false, "message": err.Error()})
 		return
 	}
 
 	cols := strings.Join(commonColumns, ", ")
+	ph, args := buildPlaceholders(shopIDs)
 
 	// Count total from both tables.
-	countSQL := `SELECT
-		(SELECT COUNT(*) FROM review_detail_dianping WHERE shop_id = ?) +
-		(SELECT COUNT(*) FROM review_detail_meituan WHERE shop_id = ?)`
+	countSQL := fmt.Sprintf(`SELECT
+		(SELECT COUNT(*) FROM review_detail_dianping WHERE shop_id IN (%s)) +
+		(SELECT COUNT(*) FROM review_detail_meituan WHERE shop_id IN (%s))`, ph, ph)
+	countArgs := append(args, args...)
 	var total int
-	if err := db.QueryRow(countSQL, shopID, shopID).Scan(&total); err != nil {
+	if err := db.QueryRow(countSQL, countArgs...).Scan(&total); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"success": false, "message": "database error"})
 		log.Printf("count error [all]: %v", err)
 		return
@@ -162,12 +190,14 @@ func handleAllReviews(c *gin.Context) {
 
 	// UNION ALL with pagination on the merged result.
 	querySQL := fmt.Sprintf(`SELECT * FROM (
-		SELECT %s, 'dianping' AS platform FROM review_detail_dianping WHERE shop_id = ?
+		SELECT %s, 'dianping' AS platform FROM review_detail_dianping WHERE shop_id IN (%s)
 		UNION ALL
-		SELECT %s, 'meituan' AS platform FROM review_detail_meituan WHERE shop_id = ?
-	) AS combined ORDER BY add_time DESC LIMIT ? OFFSET ?`, cols, cols)
+		SELECT %s, 'meituan' AS platform FROM review_detail_meituan WHERE shop_id IN (%s)
+	) AS combined ORDER BY add_time DESC LIMIT ? OFFSET ?`, cols, ph, cols, ph)
 
-	rows, err := db.Query(querySQL, shopID, shopID, pageSize, offset)
+	queryArgs := append(args, args...)
+	queryArgs = append(queryArgs, pageSize, offset)
+	rows, err := db.Query(querySQL, queryArgs...)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"success": false, "message": "database error"})
 		log.Printf("query error [all]: %v", err)
